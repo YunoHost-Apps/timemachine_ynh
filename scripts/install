@@ -33,17 +33,6 @@ admin_mail=$(ynh_user_get_info --username=$admin --key=mail)
 app=$YNH_APP_INSTANCE_NAME
 
 #=================================================
-# CHECK IF THE APP CAN BE INSTALLED WITH THESE ARGS
-#=================================================
-
-ynh_script_progression --message="Validating installation parameters..." --time --weight=1
-
-### If the app uses NGINX as web server (written in HTML/PHP in most cases), the final path should be "/var/www/$app".
-### If the app provides an internal web server (or uses another application server such as uWSGI), the final path should be "/opt/yunohost/$app"
-final_path=/opt/yunohost/$app
-test ! -e "$final_path" || ynh_die --message="This path already contains a folder"
-
-#=================================================
 # STORE SETTINGS FROM MANIFEST
 #=================================================
 ynh_script_progression --message="Storing installation settings..." --time --weight=1
@@ -73,7 +62,7 @@ ynh_install_app_dependencies $pkg_dependencies
 ynh_script_progression --message="Configuring system user..." --time --weight=1
 
 # Create a system user
-ynh_system_user_create --username=$app --home_dir="$final_path"
+ynh_system_user_create --username=$app
 
 # Createa samba user
 (echo "$password"; echo "$password") | ynh_exec_warn_less smbpasswd -s -a "$app"
