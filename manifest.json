@@ -10,11 +10,11 @@
     "url": "https://example.com",
     "upstream": {
         "license": "free",
-        "website": "https://example.com",
+        "website": "https://support.apple.com/en-us/HT201250",
         "demo": "https://demo.example.com",
         "admindoc": "https://yunohost.org/packaging_apps",
-        "userdoc": "https://yunohost.org/apps",
-        "code": "https://some.forge.com/example/example"
+        "userdoc": "https://support.apple.com/en-us/HT201250",
+        "code": "https://github.com/YunoHost-Apps/timemachine_ynh"
     },
     "license": "free",
     "maintainer": {
