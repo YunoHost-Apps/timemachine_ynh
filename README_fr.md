@@ -19,12 +19,9 @@ Package to create a Time Machine Backup Source
 
 ### Features
 
-- Ut enim ad minim veniam, quis nostrud exercitation ullamco ;
-- Laboris nisi ut aliquip ex ea commodo consequat ;
-- Duis aute irure dolor in reprehenderit in voluptate ;
-- Velit esse cillum dolore eu fugiat nulla pariatur ;
-- Excepteur sint occaecat cupidatat non proident, sunt in culpa."
-
+- Automatically detected by Time Machine
+- Integrated with YunoHost's Backups
+- Supports multiple installs
 
 **Version incluse :** 1.0~ynh3
 
@@ -37,24 +34,22 @@ Package to create a Time Machine Backup Source
 ## Avertissements / informations importantes
 
 * Any known limitations, constrains or stuff not working, such as (but not limited to):
-    * requiring a full dedicated domain ?
-    * architectures not supported ?
-    * not-working single-sign on or LDAP integration ?
-    * the app requires an important amount of RAM / disk / .. to install or to work properly
-    * etc...
+    * Only the *.local location is detected automatically. To use the domain, you need to first manually connect to the server using the command `open THE_CONNECTION_STRING` on your Mac
+    * There is currently no granular control for disallowing connections from hosts (i.e anyone with the username, password and domain can connect to the Time Machine Volume)
 
-* Other infos that people should be aware of, such as:
-    * any specific step to perform after installing (such as manually finishing the install, specific admin credentials, ...)
-    * how to configure / administrate the application if it ain't obvious
-    * upgrade process / specificities / things to be aware of ?
-    * security considerations ?
+* Connecting manually:
+    * The connection string format is also sent via e-mail `smb://timemachine:password@IP_OR_DOMAIN/timemachine`
+    * In Finder, use `Command+K` and enter the connection string. If `timemachine` is greyed out, you might need to unmount the volume using the command `sudo umount /Volumes/timemachine` first
+
+* Disallowing connections from outside network:
+    * Edit either `/etc/samba/smb.conf` or `/etc/smb/smb.d/timemachine.conf` (An option might be added in the future)
 
 ## Documentations et ressources
 
-* Site officiel de l'app : <https://example.com>
-* Documentation officielle utilisateur : <https://yunohost.org/apps>
+* Site officiel de l'app : <https://support.apple.com/en-us/HT201250>
+* Documentation officielle utilisateur : <https://support.apple.com/en-us/HT201250>
 * Documentation officielle de l'admin : <https://yunohost.org/packaging_apps>
-* Dépôt de code officiel de l'app : <https://some.forge.com/example/example>
+* Dépôt de code officiel de l'app : <https://github.com/YunoHost-Apps/timemachine_ynh>
 * Documentation YunoHost pour cette app : <https://yunohost.org/app_timemachine>
 * Signaler un bug : <https://github.com/YunoHost-Apps/timemachine_ynh/issues>
 
