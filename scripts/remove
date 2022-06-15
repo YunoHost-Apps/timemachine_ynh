@@ -61,6 +61,8 @@ ynh_script_progression --message="Removing various files..." --time --weight=1
 ynh_secure_remove --file="/etc/smb/smb.d/$app.conf"
 ynh_secure_remove --file="/etc/avahi/services/$app.service"
 
+samba_sysadmin_update
+
 #=================================================
 # GENERIC FINALIZATION
 #=================================================
@@ -70,6 +72,7 @@ ynh_script_progression --message="Removing the dedicated system user..." --time 
 
 # Delete a system user
 ynh_system_user_delete --username=$app
+
 
 #=================================================
 # END OF SCRIPT

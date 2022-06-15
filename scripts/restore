@@ -111,6 +111,7 @@ ynh_restore_file --origin_path="/etc/smb/smb.d/$app.conf"
 ynh_restore_file --origin_path="/etc/avahi/services/$app.service"
 
 samba_sysadmin_update
+samba_sysadmin_add
 
 #=================================================
 # GENERIC FINALIZATION

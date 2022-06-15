@@ -1,4 +1,4 @@
-Some long and extensive description of what the app is and does, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Package to create a Time Machine Backup Source
 
 ### Features
 

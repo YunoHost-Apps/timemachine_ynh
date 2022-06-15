@@ -25,6 +25,15 @@ samba_sysadmin_update () {
     ls /etc/smb/smb.d/* | sed -e 's/^/include = /' > /etc/smb/includes.conf
 }
 
+samba_sysadmin_add () {
+    if grep -R "include = /etc/sdmb/includes.conf" /etc/samba/smb.conf
+    then
+        echo "The includes.conf file is already present in your smb.conf file."
+    else
+        echo "include = /etc/smb/includes.conf" >> /etc/samba/smb.conf
+    fi
+}
+
 #=================================================
 # EXPERIMENTAL HELPERS
 #=================================================

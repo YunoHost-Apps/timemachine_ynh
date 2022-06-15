@@ -112,6 +112,9 @@ ynh_add_config --template="../conf/avahi-samba.service" --destination="/etc/avah
 # Update samba configuration
 samba_sysadmin_update
 
+# Check and Add
+samba_sysadmin_add
+
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================

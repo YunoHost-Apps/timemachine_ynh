@@ -139,6 +139,9 @@ ynh_script_progression --message="Updating a configuration file..." --time --wei
 ynh_add_config --template="../conf/smb.conf" --destination="/etc/smb/smb.d/$app.conf"
 ynh_add_config --template="../conf/avahi-samba.service" --destination="/etc/avahi/services/$app.service"
 
+samba_sysadmin_update
+samba_sysadmin_add
+
 # FIXME: this should be handled by the core in the future
 # You may need to use chmod 600 instead of 400,
 # for example if the app is expected to be able to modify its own config
