@@ -25,8 +25,6 @@ Package to create a Time Machine Backup Source
 
 **Version incluse :** 1.0~ynh3
 
-**Démo :** https://demo.example.com
-
 ## Captures d'écran
 
 ![Capture d'écran de Time Machine](./doc/screenshots/example.jpg)
@@ -47,8 +45,6 @@ Package to create a Time Machine Backup Source
 ## Documentations et ressources
 
 * Site officiel de l'app : <https://support.apple.com/en-us/HT201250>
-* Documentation officielle utilisateur : <https://support.apple.com/en-us/HT201250>
-* Documentation officielle de l'admin : <https://yunohost.org/packaging_apps>
 * Dépôt de code officiel de l'app : <https://github.com/YunoHost-Apps/timemachine_ynh>
 * Documentation YunoHost pour cette app : <https://yunohost.org/app_timemachine>
 * Signaler un bug : <https://github.com/YunoHost-Apps/timemachine_ynh/issues>
