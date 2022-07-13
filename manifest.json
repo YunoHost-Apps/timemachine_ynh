@@ -28,18 +28,13 @@
         "install": [
             {
                 "name": "admin",
-                "type": "string",
-                "help": {
-                    "en": "User to whom the usage details will be sent",
-                    "fr": ""
-                }
+                "type": "user"
             },
             {
                 "name": "password",
                 "type": "password",
                 "help": {
-                    "en": "Password to access the Time Machine",
-                    "fr": "Utilisez le champ aide pour ajouter une information à l'intention de l'administrateur à propos de cette question."
+                    "en": "Password to access the Time Machine"
                 }
             }
         ]
