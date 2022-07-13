@@ -86,7 +86,6 @@ samba_sysadmin_add
 ynh_script_progression --message="Integrating service in YunoHost..."
 
 yunohost service add smbd --needs_exposed_ports 445
-yunohost service add avahi-daemon
 
 #=================================================
 # START SYSTEMD SERVICE
