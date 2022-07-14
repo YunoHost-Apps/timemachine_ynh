@@ -15,8 +15,7 @@ source /usr/share/yunohost/helpers
 #=================================================
 
 ynh_clean_setup () {
-	### Remove this function if there's nothing to clean before calling the remove script.
-	true
+	ynh_clean_check_starting
 }
 # Exit if an error occurs during the execution of the script
 ynh_abort_if_errors
@@ -28,14 +27,14 @@ ynh_abort_if_errors
 admin=$YNH_APP_ARG_ADMIN
 password=$YNH_APP_ARG_PASSWORD
 
-admin_mail=$(ynh_user_get_info --username=$admin --key=mail)
-
 app=$YNH_APP_INSTANCE_NAME
+
+admin_mail=$(ynh_user_get_info --username=$admin --key=mail)
 
 #=================================================
 # STORE SETTINGS FROM MANIFEST
 #=================================================
-ynh_script_progression --message="Storing installation settings..." --time --weight=1
+ynh_script_progression --message="Storing installation settings..." --weight=1
 
 ynh_app_setting_set --app=$app --key=admin --value=$admin
 ynh_app_setting_set --app=$app --key=password --value=$password
@@ -46,45 +45,36 @@ ynh_app_setting_set --app=$app --key=password --value=$password
 # OPEN PORT 445
 #=================================================
 
-ynh_script_progression --message="Configuring firewall..." --time --weight=1
+ynh_script_progression --message="Configuring firewall..." --weight=1
 ynh_exec_warn_less yunohost firewall allow --no-upnp TCP 445 # Allow SMB access
 
 #=================================================
 # INSTALL DEPENDENCIES
 #=================================================
-ynh_script_progression --message="Installing dependencies..." --time --weight=1
+ynh_script_progression --message="Installing dependencies..." --weight=1
 
 ynh_install_app_dependencies $pkg_dependencies
 
 #=================================================
 # CREATE DEDICATED USER
 #=================================================
-ynh_script_progression --message="Configuring system user..." --time --weight=1
+ynh_script_progression --message="Configuring system user..." --weight=1
 
 # Create a system user
 ynh_system_user_create --username=$app
-
-# Createa samba user
-(echo "$password"; echo "$password") | ynh_exec_warn_less smbpasswd -s -a "$app"
 
 #=================================================
 # SPECIFIC SETUP
 #=================================================
 # CREATE DATA DIRECTORY
 #=================================================
-ynh_script_progression --message="Creating a data directory..." --time --weight=1
+ynh_script_progression --message="Creating a data directory..." --weight=1
 
 datadir=/home/yunohost.app/$app
 ynh_app_setting_set --app=$app --key=datadir --value=$datadir
 
 mkdir -p $datadir
 
-# FIXME: this should be managed by the core in the future
-# Here, as a packager, you may have to tweak the ownerhsip/permissions
-# such that the appropriate users (e.g. maybe www-data) can access
-# files in some cases.
-# But FOR THE LOVE OF GOD, do not allow r/x for "others" on the entire folder -
-# this will be treated as a security issue.
 chmod 750 "$datadir"
 chmod -R o-rwx "$datadir"
 chown -R $app: "$datadir"
@@ -92,11 +82,14 @@ chown -R $app: "$datadir"
 #=================================================
 # ADD A CONFIGURATION
 #=================================================
-ynh_script_progression --message="Adding a configuration file..." --time --weight=1
+ynh_script_progression --message="Adding a configuration file..." --weight=1
 
 samba_sysadmin_setup
 ynh_add_config --template="../conf/smb.conf" --destination="/etc/smb/smb.d/$app.conf"
 ynh_add_config --template="../conf/avahi-samba.service" --destination="/etc/avahi/services/$app.service"
+
+# Create a samba user
+(echo "$password"; echo "$password") | ynh_exec_warn_less smbpasswd -s -a "$app"
 
 # Update samba configuration
 samba_sysadmin_update
@@ -105,14 +98,20 @@ samba_sysadmin_update
 samba_sysadmin_add
 
 #=================================================
+# INTEGRATE SERVICE IN YUNOHOST
+#=================================================
+ynh_script_progression --message="Integrating service in YunoHost..."
+
+yunohost service add smbd --needs_exposed_ports 445
+
+#=================================================
 # START SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Starting a systemd service..." --time --weight=1
+ynh_script_progression --message="Starting a systemd service..." --weight=1
 
 ynh_exec_warn_less testparm -s
 
 ynh_systemd_action --service_name=smbd --action="reload"
-
 ynh_systemd_action --service_name=avahi-daemon --action="restart"
 
 #=================================================
@@ -126,4 +125,4 @@ ynh_send_readme_to_admin --app_message="../conf/msg_install" --recipients="$admi
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Installation of $app completed" --time --last
+ynh_script_progression --message="Installation of $app completed" --last

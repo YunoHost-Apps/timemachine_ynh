@@ -23,7 +23,7 @@ Package to create a Time Machine Backup Source
 - Integrated with YunoHost's Backups
 - Supports multiple installs
 
-**Shipped version:** 1.0~ynh3
+**Shipped version:** 1.0~ynh4
 
 ## Screenshots
 
