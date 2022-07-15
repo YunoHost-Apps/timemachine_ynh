@@ -15,7 +15,6 @@ source /usr/share/yunohost/helpers
 #=================================================
 
 ynh_clean_setup () {
-	### Remove this function if there's nothing to clean before calling the remove script.
 	true
 }
 # Exit if an error occurs during the execution of the script
@@ -27,6 +26,7 @@ ynh_abort_if_errors
 ynh_print_info --message="Loading installation settings..."
 
 app=$YNH_APP_INSTANCE_NAME
+
 datadir=$(ynh_app_setting_get --app=$app --key=datadir)
 
 #=================================================
