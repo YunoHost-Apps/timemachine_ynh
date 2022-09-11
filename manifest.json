@@ -6,7 +6,7 @@
         "en": "Application to configure the server as a Time Machine backup target",
         "fr": "Application pour configurer le serveur comme cible de sauvegarde Time Machine"
     },
-    "version": "1.0~ynh4",
+    "version": "1.0~ynh5",
     "url": "https://support.apple.com/en-us/HT201250",
     "upstream": {
         "license": "WTFPL",
