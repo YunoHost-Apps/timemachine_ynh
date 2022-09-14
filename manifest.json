@@ -3,10 +3,10 @@
     "id": "timemachine",
     "packaging_format": 1,
     "description": {
-        "en": "App to setup the server as a Time Machine backup target",
-        "fr": "Expliquez en *quelques* (10~15) mots l'utilité de l'app ou ce qu'elle fait (l'objectif est de donner une idée grossière pour des utilisateurs qui naviguent dans un catalogue de 100+ apps)"
+        "en": "Application to configure the server as a Time Machine backup target",
+        "fr": "Application pour configurer le serveur comme cible de sauvegarde Time Machine"
     },
-    "version": "1.0~ynh4",
+    "version": "1.0~ynh5",
     "url": "https://support.apple.com/en-us/HT201250",
     "upstream": {
         "license": "WTFPL",
@@ -34,7 +34,8 @@
                 "name": "password",
                 "type": "password",
                 "help": {
-                    "en": "Password to access the Time Machine"
+                    "en": "Password to access the Time Machine",
+                    "fr": "Mot de passe pour accéder à Time Machine"
                 }
             }
         ]
