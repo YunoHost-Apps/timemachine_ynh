@@ -10,15 +10,6 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# LOAD SETTINGS
-#=================================================
-#REMOVEME? ynh_script_progression --message="Loading installation settings..." --weight=1
-
-#REMOVEME? app=$YNH_APP_INSTANCE_NAME
-
-#REMOVEME? data_dir=$(ynh_app_setting_get --app=$app --key=data_dir)
-
-#=================================================
 # STANDARD REMOVE
 #=================================================
 # REMOVE SERVICE INTEGRATION IN YUNOHOST
@@ -39,42 +30,12 @@ then
 fi
 
 #=================================================
-# REMOVE APP MAIN DIR
-#=================================================
-#REMOVEME? ynh_script_progression --message="Removing app main directory..." --weight=1
-
-#=================================================
-# REMOVE DATA DIR
-#=================================================
-
-# Remove the data directory if --purge option is used
-if [ "${YNH_APP_PURGE:-0}" -eq 1 ]
-then
-	ynh_script_progression --message="Removing app data directory..." --weight=1
-#REMOVEME? 	ynh_secure_remove --file="$data_dir"
-fi
-
-
-#=================================================
 # REMOVE DEPENDENCIES
 #=================================================
-#REMOVEME? ynh_script_progression --message="Removing dependencies..." --weight=1
+ynh_script_progression --message="Removing dependencies..." --weight=1
 
 # Delete User from Samba
 ynh_exec_warn_less smbpasswd -x $app
-
-# Remove metapackage and its dependencies
-#REMOVEME? ynh_remove_app_dependencies
-
-#=================================================
-# CLOSE A PORT
-#=================================================
-
-if yunohost firewall list | grep -q "\- 445$"
-then
-	ynh_script_progression --message="Closing port 445..."
-	ynh_exec_warn_less yunohost firewall disallow TCP 445
-fi
 
 #=================================================
 # SPECIFIC REMOVE
@@ -88,16 +49,6 @@ ynh_secure_remove --file="/etc/smb/smb.d/$app.conf"
 ynh_secure_remove --file="/etc/avahi/services/$app.service"
 
 samba_sysadmin_update
-
-#=================================================
-# GENERIC FINALIZATION
-#=================================================
-# REMOVE DEDICATED USER
-#=================================================
-#REMOVEME? ynh_script_progression --message="Removing the dedicated system user..." --weight=1
-
-# Delete a system user
-#REMOVEME? ynh_system_user_delete --username=$app
 
 #=================================================
 # END OF SCRIPT

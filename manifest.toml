@@ -41,6 +41,9 @@ ram.runtime = "50M"
     [resources.data_dir]
 
     [resources.permissions]
+    main.url = "/"
+
+    [resources.ports]
 
     [resources.api]
     packages = "samba, samba-common-bin, avahi-daemon"
