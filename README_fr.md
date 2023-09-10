@@ -5,15 +5,16 @@ It shall NOT be edited by hand.
 
 # Time Machine pour YunoHost
 
-[![Niveau d'intégration](https://dash.yunohost.org/integration/timemachine.svg)](https://dash.yunohost.org/appci/app/timemachine) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/timemachine.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/timemachine.maintain.svg)  
+[![Niveau d’intégration](https://dash.yunohost.org/integration/timemachine.svg)](https://dash.yunohost.org/appci/app/timemachine) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/timemachine.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/timemachine.maintain.svg)
+
 [![Installer Time Machine avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=timemachine)
 
 *[Read this readme in english.](./README.md)*
 
-> *Ce package vous permet d'installer Time Machine rapidement et simplement sur un serveur YunoHost.
-Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l'installer et en profiter.*
+> *Ce package vous permet d’installer Time Machine rapidement et simplement sur un serveur YunoHost.
+Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l’installer et en profiter.*
 
-## Vue d'ensemble
+## Vue d’ensemble
 
 Package to create a Time Machine Backup Source
 
@@ -23,12 +24,11 @@ Package to create a Time Machine Backup Source
 - Integrated with YunoHost's Backups
 - Supports multiple installs
 
-**Version incluse :** 1.0~ynh4
+**Version incluse :** 1.0~ynh5
 
+## Captures d’écran
 
-## Captures d'écran
-
-![Capture d'écran de Time Machine](./doc/screenshots/example.jpg)
+![Capture d’écran de Time Machine](./doc/screenshots/example.jpg)
 
 ## Avertissements / informations importantes
 
@@ -45,8 +45,8 @@ Package to create a Time Machine Backup Source
 
 ## Documentations et ressources
 
-* Site officiel de l'app : <https://support.apple.com/en-us/HT201250>
-* Dépôt de code officiel de l'app : <https://github.com/YunoHost-Apps/timemachine_ynh>
+* Site officiel de l’app : <https://support.apple.com/en-us/HT201250>
+* Dépôt de code officiel de l’app : <https://github.com/YunoHost-Apps/timemachine_ynh>
 * Documentation YunoHost pour cette app : <https://yunohost.org/app_timemachine>
 * Signaler un bug : <https://github.com/YunoHost-Apps/timemachine_ynh/issues>
 
@@ -62,4 +62,4 @@ ou
 sudo yunohost app upgrade timemachine -u https://github.com/YunoHost-Apps/timemachine_ynh/tree/testing --debug
 ```
 
-**Plus d'infos sur le packaging d'applications :** <https://yunohost.org/packaging_apps>
+**Plus d’infos sur le packaging d’applications :** <https://yunohost.org/packaging_apps>
