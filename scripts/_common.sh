@@ -5,7 +5,7 @@
 #=================================================
 
 # dependencies used by the app
-pkg_dependencies="samba samba-common-bin avahi-daemon"
+#REMOVEME? pkg_dependencies="samba samba-common-bin avahi-daemon"
 
 #=================================================
 # PERSONAL HELPERS

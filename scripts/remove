@@ -12,11 +12,11 @@ source /usr/share/yunohost/helpers
 #=================================================
 # LOAD SETTINGS
 #=================================================
-ynh_script_progression --message="Loading installation settings..." --weight=1
+#REMOVEME? ynh_script_progression --message="Loading installation settings..." --weight=1
 
-app=$YNH_APP_INSTANCE_NAME
+#REMOVEME? app=$YNH_APP_INSTANCE_NAME
 
-datadir=$(ynh_app_setting_get --app=$app --key=datadir)
+#REMOVEME? data_dir=$(ynh_app_setting_get --app=$app --key=data_dir)
 
 #=================================================
 # STANDARD REMOVE
@@ -41,7 +41,7 @@ fi
 #=================================================
 # REMOVE APP MAIN DIR
 #=================================================
-ynh_script_progression --message="Removing app main directory..." --weight=1
+#REMOVEME? ynh_script_progression --message="Removing app main directory..." --weight=1
 
 #=================================================
 # REMOVE DATA DIR
@@ -51,20 +51,20 @@ ynh_script_progression --message="Removing app main directory..." --weight=1
 if [ "${YNH_APP_PURGE:-0}" -eq 1 ]
 then
 	ynh_script_progression --message="Removing app data directory..." --weight=1
-	ynh_secure_remove --file="$datadir"
+#REMOVEME? 	ynh_secure_remove --file="$data_dir"
 fi
 
 
 #=================================================
 # REMOVE DEPENDENCIES
 #=================================================
-ynh_script_progression --message="Removing dependencies..." --weight=1
+#REMOVEME? ynh_script_progression --message="Removing dependencies..." --weight=1
 
 # Delete User from Samba
 ynh_exec_warn_less smbpasswd -x $app
 
 # Remove metapackage and its dependencies
-ynh_remove_app_dependencies
+#REMOVEME? ynh_remove_app_dependencies
 
 #=================================================
 # CLOSE A PORT
@@ -94,10 +94,10 @@ samba_sysadmin_update
 #=================================================
 # REMOVE DEDICATED USER
 #=================================================
-ynh_script_progression --message="Removing the dedicated system user..." --weight=1
+#REMOVEME? ynh_script_progression --message="Removing the dedicated system user..." --weight=1
 
 # Delete a system user
-ynh_system_user_delete --username=$app
+#REMOVEME? ynh_system_user_delete --username=$app
 
 #=================================================
 # END OF SCRIPT

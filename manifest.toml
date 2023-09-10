@@ -1,0 +1,47 @@
+packaging_format = 2
+
+id = "timemachine"
+name = "Time Machine"
+description.en = "Application to configure the server as a Time Machine backup target"
+description.fr = "Application pour configurer le serveur comme cible de sauvegarde Time Machine"
+
+version = "1.0~ynh5"
+
+maintainers = ["Navan Chauhan"]
+
+[upstream]
+license = "WTFPL"
+website = "https://support.apple.com/en-us/HT201250"
+code = "https://github.com/YunoHost-Apps/timemachine_ynh"
+cpe = "???" # FIXME: optional but recommended if relevant, this is meant to contain the Common Platform Enumeration, which is sort of a standard id for applications defined by the NIST. In particular, Yunohost may use this is in the future to easily track CVE (=security reports) related to apps. The CPE may be obtained by searching here: https://nvd.nist.gov/products/cpe/search. For example, for Nextcloud, the CPE is 'cpe:2.3:a:nextcloud:nextcloud' (no need to include the version number)
+fund = "???" # FIXME: optional but recommended (or remove if irrelevant / not applicable). This is meant to be an URL where people can financially support this app, especially when its development is based on volunteers and/or financed by its community. YunoHost may later advertise it in the webadmin.
+
+[integration]
+yunohost = ">= 4.3.0"
+architectures = "all" # FIXME: can be replaced by a list of supported archs using the dpkg --print-architecture nomenclature (amd64/i386/armhf/arm64), for example: ["amd64", "i386"]
+multi_instance = true
+ldap = "?" # FIXME: replace with true, false, or "not_relevant". Not to confuse with the "sso" key : the "ldap" key corresponds to wether or not a user *can* login on the app using its YunoHost credentials.
+sso = "?" # FIXME: replace with true, false, or "not_relevant". Not to confuse with the "ldap" key : the "sso" key corresponds to wether or not a user is *automatically logged-in* on the app when logged-in on the YunoHost portal.
+disk = "50M" # FIXME: replace with an **estimate** minimum disk requirement. e.g. 20M, 400M, 1G, ...
+ram.build = "50M" # FIXME: replace with an **estimate** minimum ram requirement. e.g. 50M, 400M, 1G, ...
+ram.runtime = "50M" # FIXME: replace with an **estimate** minimum ram requirement. e.g. 50M, 400M, 1G, ...
+
+[install]
+    [install.admin]
+    # this is a generic question - ask strings are automatically handled by Yunohost's core
+    type = "user"
+
+    [install.password]
+    # this is a generic question - ask strings are automatically handled by Yunohost's core
+    help.en = "Password to access the Time Machine"
+    help.fr = "Mot de passe pour accéder à Time Machine"
+    type = "password"
+
+[resources]
+    [resources.system_user]
+
+    [resources.install_dir]
+
+    [resources.data_dir]
+
+    [resources.permissions]
