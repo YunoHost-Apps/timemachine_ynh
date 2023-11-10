@@ -34,7 +34,7 @@ Package to create a Time Machine Backup Source
 
 * Site officiel de l’app : <https://support.apple.com/en-us/HT201250>
 * Dépôt de code officiel de l’app : <https://github.com/YunoHost-Apps/timemachine_ynh>
-* Documentation YunoHost pour cette app : <https://yunohost.org/app_timemachine>
+* YunoHost Store: <https://apps.yunohost.org/app/timemachine>
 * Signaler un bug : <https://github.com/YunoHost-Apps/timemachine_ynh/issues>
 
 ## Informations pour les développeurs
