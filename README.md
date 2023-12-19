@@ -32,7 +32,7 @@ Package to create a Time Machine Backup Source
 
 ## Disclaimers / important information
 
-* Any known limitations, constrains or stuff not working, such as (but not limited to):
+* Known limitations
     * Only the *.local location is detected automatically. To use the domain, you need to first manually connect to the server using the command `open THE_CONNECTION_STRING` on your Mac
     * There is currently no granular control for disallowing connections from hosts (i.e anyone with the username, password and domain can connect to the Time Machine Volume)
 
