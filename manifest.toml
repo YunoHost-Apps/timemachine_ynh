@@ -48,8 +48,8 @@ ram.runtime = "50M"
 
     [resources.data_dir]
 
-    [resources.permissions]
-    main.url = "/"
+    # [resources.permissions]
+    # main.url = "/"
 
     [resources.ports]
 
