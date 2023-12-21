@@ -3,8 +3,8 @@
     "id": "timemachine",
     "packaging_format": 1,
     "description": {
-        "en": "Application to configure the server as a Time Machine backup target",
-        "fr": "Application pour configurer le serveur comme cible de sauvegarde Time Machine"
+        "en": "Configure the server as a Time Machine backup target",
+        "fr": "Configurer le serveur comme cible de sauvegarde Time Machine"
     },
     "version": "1.0~ynh5",
     "url": "https://support.apple.com/en-us/HT201250",
@@ -19,7 +19,7 @@
         "email": "timemachine@navan.email"
     },
     "requirements": {
-        "yunohost": ">= 4.3.0"
+        "yunohost": ">= 11.2"
     },
     "multi_instance": true,
     "services": [
