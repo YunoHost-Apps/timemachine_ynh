@@ -48,5 +48,5 @@ ram.runtime = "50M"
 
     [resources.ports]
 
-    [resources.api]
+    [resources.apt]
     packages = "samba, samba-common-bin, avahi-daemon"
