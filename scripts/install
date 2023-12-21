@@ -31,8 +31,8 @@ ynh_exec_warn_less yunohost firewall allow --no-upnp TCP 445 # Allow SMB access
 ynh_script_progression --message="Adding a configuration file..." --weight=1
 
 samba_sysadmin_setup
-ynh_add_config --template="../conf/smb.conf" --destination="/etc/smb/smb.d/$app.conf"
-ynh_add_config --template="../conf/avahi-samba.service" --destination="/etc/avahi/services/$app.service"
+ynh_add_config --template="smb.conf" --destination="/etc/smb/smb.d/$app.conf"
+ynh_add_config --template="avahi-samba.service" --destination="/etc/avahi/services/$app.service"
 
 # Create a samba user
 (echo "$password"; echo "$password") | ynh_exec_warn_less smbpasswd -s -a "$app"
@@ -46,7 +46,7 @@ samba_sysadmin_add
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
 #=================================================
-ynh_script_progression --message="Integrating service in YunoHost..."
+ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
 
 yunohost service add smbd --needs_exposed_ports 445
 
@@ -59,13 +59,6 @@ ynh_exec_warn_less testparm -s
 
 ynh_systemd_action --service_name=smbd --action="reload"
 ynh_systemd_action --service_name=avahi-daemon --action="restart"
-
-#=================================================
-# SEND A README FOR THE ADMIN
-#=================================================
-ynh_script_progression --message="Sending a readme for the admin..."
-
-ynh_send_readme_to_admin --app_message="../conf/msg_install" --recipients="$admin_mail" --type='install'
 
 #=================================================
 # END OF SCRIPT

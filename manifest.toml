@@ -2,8 +2,8 @@ packaging_format = 2
 
 id = "timemachine"
 name = "Time Machine"
-description.en = "Application to configure the server as a Time Machine backup target"
-description.fr = "Application pour configurer le serveur comme cible de sauvegarde Time Machine"
+description.en = "Configure the server as a Time Machine backup target"
+description.fr = "Configurer le serveur comme cible de sauvegarde Time Machine"
 
 version = "1.0~ynh5"
 

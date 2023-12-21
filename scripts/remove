@@ -29,20 +29,8 @@ then
 	yunohost service remove avahi-daemon
 fi
 
-#=================================================
-# REMOVE DEPENDENCIES
-#=================================================
-ynh_script_progression --message="Removing dependencies..." --weight=1
-
 # Delete User from Samba
 ynh_exec_warn_less smbpasswd -x $app
-
-#=================================================
-# SPECIFIC REMOVE
-#=================================================
-# REMOVE VARIOUS FILES
-#=================================================
-ynh_script_progression --message="Removing various files..." --weight=1
 
 # Remove the log files
 ynh_secure_remove --file="/etc/smb/smb.d/$app.conf"
