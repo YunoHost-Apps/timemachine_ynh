@@ -1,0 +1,57 @@
+packaging_format = 2
+
+id = "timemachine"
+name = "Time Machine"
+description.en = "Configure the server as a Time Machine backup target"
+description.fr = "Configurer le serveur comme cible de sauvegarde Time Machine"
+
+version = "1.0~ynh5"
+
+maintainers = ["Navan Chauhan"]
+
+[upstream]
+license = "WTFPL"
+website = "https://support.apple.com/en-us/HT201250"
+code = "https://github.com/YunoHost-Apps/timemachine_ynh"
+
+[integration]
+yunohost = ">= 11.2"
+architectures = "all"
+multi_instance = true
+
+ldap = false
+
+sso = false
+
+disk = "50M"
+ram.build = "50M"
+ram.runtime = "50M"
+
+[install]
+
+    [install.init_main_permission]
+    type = "group"
+    default = "visitors"
+
+    [install.admin]
+    type = "user"
+
+    [install.password]
+    help.en = "Password to access the Time Machine"
+    help.fr = "Mot de passe pour accéder à Time Machine"
+    type = "password"
+
+[resources]
+    [resources.system_user]
+
+    [resources.install_dir]
+
+    [resources.data_dir]
+
+    # [resources.permissions]
+    # main.url = "/"
+
+    [resources.ports]
+
+    [resources.apt]
+    packages = "samba, samba-common-bin, avahi-daemon"
