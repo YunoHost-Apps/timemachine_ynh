@@ -5,7 +5,7 @@ name = "Time Machine"
 description.en = "Configure the server as a Time Machine backup target"
 description.fr = "Configurer le serveur comme cible de sauvegarde Time Machine"
 
-version = "1.0~ynh5"
+version = "1.0~ynh6"
 
 maintainers = ["Navan Chauhan"]
 
