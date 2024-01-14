@@ -29,6 +29,13 @@ samba_sysadmin_update
 samba_sysadmin_add
 
 #=================================================
+# OPEN PORT 445
+#=================================================
+ynh_script_progression --message="Configuring firewall..." --weight=1
+
+ynh_exec_warn_less yunohost firewall allow --no-upnp TCP 445 # Allow SMB access
+
+#=================================================
 # GENERIC FINALIZATION
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
