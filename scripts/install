@@ -11,73 +11,19 @@ source ynh_send_readme_to_admin__2
 source /usr/share/yunohost/helpers
 
 #=================================================
-# MANAGE SCRIPT FAILURE
-#=================================================
-
-ynh_clean_setup () {
-	ynh_clean_check_starting
-}
-# Exit if an error occurs during the execution of the script
-ynh_abort_if_errors
-
-#=================================================
 # RETRIEVE ARGUMENTS FROM THE MANIFEST
 #=================================================
 
-admin=$YNH_APP_ARG_ADMIN
-password=$YNH_APP_ARG_PASSWORD
-
-app=$YNH_APP_INSTANCE_NAME
-
 admin_mail=$(ynh_user_get_info --username=$admin --key=mail)
-
-#=================================================
-# STORE SETTINGS FROM MANIFEST
-#=================================================
-ynh_script_progression --message="Storing installation settings..." --weight=1
-
-ynh_app_setting_set --app=$app --key=admin --value=$admin
-ynh_app_setting_set --app=$app --key=password --value=$password
 
 #=================================================
 # STANDARD MODIFICATIONS
 #=================================================
 # OPEN PORT 445
 #=================================================
-
 ynh_script_progression --message="Configuring firewall..." --weight=1
+
 ynh_exec_warn_less yunohost firewall allow --no-upnp TCP 445 # Allow SMB access
-
-#=================================================
-# INSTALL DEPENDENCIES
-#=================================================
-ynh_script_progression --message="Installing dependencies..." --weight=1
-
-ynh_install_app_dependencies $pkg_dependencies
-
-#=================================================
-# CREATE DEDICATED USER
-#=================================================
-ynh_script_progression --message="Configuring system user..." --weight=1
-
-# Create a system user
-ynh_system_user_create --username=$app
-
-#=================================================
-# SPECIFIC SETUP
-#=================================================
-# CREATE DATA DIRECTORY
-#=================================================
-ynh_script_progression --message="Creating a data directory..." --weight=1
-
-datadir=/home/yunohost.app/$app
-ynh_app_setting_set --app=$app --key=datadir --value=$datadir
-
-mkdir -p $datadir
-
-chmod 750 "$datadir"
-chmod -R o-rwx "$datadir"
-chown -R $app: "$datadir"
 
 #=================================================
 # ADD A CONFIGURATION
@@ -85,8 +31,8 @@ chown -R $app: "$datadir"
 ynh_script_progression --message="Adding a configuration file..." --weight=1
 
 samba_sysadmin_setup
-ynh_add_config --template="../conf/smb.conf" --destination="/etc/smb/smb.d/$app.conf"
-ynh_add_config --template="../conf/avahi-samba.service" --destination="/etc/avahi/services/$app.service"
+ynh_add_config --template="smb.conf" --destination="/etc/smb/smb.d/$app.conf"
+ynh_add_config --template="avahi-samba.service" --destination="/etc/avahi/services/$app.service"
 
 # Create a samba user
 (echo "$password"; echo "$password") | ynh_exec_warn_less smbpasswd -s -a "$app"
@@ -100,7 +46,7 @@ samba_sysadmin_add
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
 #=================================================
-ynh_script_progression --message="Integrating service in YunoHost..."
+ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
 
 yunohost service add smbd --needs_exposed_ports 445
 
@@ -113,13 +59,6 @@ ynh_exec_warn_less testparm -s
 
 ynh_systemd_action --service_name=smbd --action="reload"
 ynh_systemd_action --service_name=avahi-daemon --action="restart"
-
-#=================================================
-# SEND A README FOR THE ADMIN
-#=================================================
-ynh_script_progression --message="Sending a readme for the admin..."
-
-ynh_send_readme_to_admin --app_message="../conf/msg_install" --recipients="$admin_mail" --type='install'
 
 #=================================================
 # END OF SCRIPT
