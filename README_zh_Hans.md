@@ -5,7 +5,7 @@
 
 # YunoHost 上的 Time Machine
 
-[![集成程度](https://dash.yunohost.org/integration/timemachine.svg)](https://dash.yunohost.org/appci/app/timemachine) ![工作状态](https://ci-apps.yunohost.org/ci/badges/timemachine.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/timemachine.maintain.svg)
+[![集成程度](https://dash.yunohost.org/integration/timemachine.svg)](https://ci-apps.yunohost.org/ci/apps/timemachine/) ![工作状态](https://ci-apps.yunohost.org/ci/badges/timemachine.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/timemachine.maintain.svg)
 
 [![使用 YunoHost 安装 Time Machine](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=timemachine)
 
@@ -24,7 +24,7 @@ Package to create a Time Machine Backup Source
 - Integrated with YunoHost's Backups
 - Supports multiple installs
 
-**分发版本：** 1.0~ynh6
+**分发版本：** 1.0~ynh7
 
 ## 截图
 

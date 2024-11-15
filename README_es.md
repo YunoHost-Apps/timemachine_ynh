@@ -5,7 +5,7 @@ No se debe editar a mano.
 
 # Time Machine para Yunohost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/timemachine.svg)](https://dash.yunohost.org/appci/app/timemachine) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/timemachine.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/timemachine.maintain.svg)
+[![Nivel de integración](https://dash.yunohost.org/integration/timemachine.svg)](https://ci-apps.yunohost.org/ci/apps/timemachine/) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/timemachine.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/timemachine.maintain.svg)
 
 [![Instalar Time Machine con Yunhost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=timemachine)
 
@@ -24,7 +24,7 @@ Package to create a Time Machine Backup Source
 - Integrated with YunoHost's Backups
 - Supports multiple installs
 
-**Versión actual:** 1.0~ynh6
+**Versión actual:** 1.0~ynh7
 
 ## Capturas
 
@@ -39,7 +39,7 @@ Package to create a Time Machine Backup Source
 
 ## Información para desarrolladores
 
-Por favor enviar sus correcciones a la [`branch testing`](https://github.com/YunoHost-Apps/timemachine_ynh/tree/testing
+Por favor enviar sus correcciones a la [rama `testing`](https://github.com/YunoHost-Apps/timemachine_ynh/tree/testing).
 
 Para probar la rama `testing`, sigue asÍ:
 

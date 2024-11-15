@@ -5,7 +5,7 @@ EZ editatu eskuz.
 
 # Time Machine YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/timemachine.svg)](https://dash.yunohost.org/appci/app/timemachine) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/timemachine.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/timemachine.maintain.svg)
+[![Integrazio maila](https://dash.yunohost.org/integration/timemachine.svg)](https://ci-apps.yunohost.org/ci/apps/timemachine/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/timemachine.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/timemachine.maintain.svg)
 
 [![Instalatu Time Machine YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=timemachine)
 
@@ -24,7 +24,7 @@ Package to create a Time Machine Backup Source
 - Integrated with YunoHost's Backups
 - Supports multiple installs
 
-**Paketatutako bertsioa:** 1.0~ynh6
+**Paketatutako bertsioa:** 1.0~ynh7
 
 ## Pantaila-argazkiak
 
