@@ -1,41 +1,26 @@
 #!/bin/bash
 
-#=================================================
-# GENERIC START
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
 source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# STANDARD REMOVE
-#=================================================
 # REMOVE SERVICE INTEGRATION IN YUNOHOST
 #=================================================
-ynh_script_progression --message="Removing system configurations related to $app..." --weight=1
+ynh_script_progression "Removing system configurations related to $app..."
 
-# Remove the service from the list of services known by YunoHost (added from `yunohost service add`)
-if ynh_exec_warn_less yunohost service status smbd >/dev/null
-then
-	ynh_script_progression --message="Removing smbd service integration..."
+if ynh_hide_warnings yunohost service status smbd >/dev/null; then
 	yunohost service remove smbd
 fi
 
-# Remove the service from the list of services known by YunoHost (added from `yunohost service add`)
-if ynh_exec_warn_less yunohost service status avahi-daemon >/dev/null
-then
-	ynh_script_progression --message="Removing avahi-daemon service integration..."
+if ynh_hide_warnings yunohost service status avahi-daemon >/dev/null; then
 	yunohost service remove avahi-daemon
 fi
 
 # Delete User from Samba
-ynh_exec_warn_less smbpasswd -x $app
+ynh_hide_warnings smbpasswd -x $app
 
-# Remove the log files
-ynh_secure_remove --file="/etc/smb/smb.d/$app.conf"
-ynh_secure_remove --file="/etc/avahi/services/$app.service"
+ynh_safe_rm "/etc/smb/smb.d/$app.conf"
+ynh_safe_rm "/etc/avahi/services/$app.service"
 
 samba_sysadmin_update
 
@@ -43,4 +28,4 @@ samba_sysadmin_update
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Removal of $app completed" --last
+ynh_script_progression "Removal of $app completed"

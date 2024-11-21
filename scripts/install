@@ -1,11 +1,5 @@
 #!/bin/bash
 
-#=================================================
-# GENERIC START
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
 source _common.sh
 source ynh_send_readme_to_admin__2
 source /usr/share/yunohost/helpers
@@ -17,25 +11,23 @@ source /usr/share/yunohost/helpers
 admin_mail=$(ynh_user_get_info --username=$admin --key=mail)
 
 #=================================================
-# STANDARD MODIFICATIONS
-#=================================================
 # OPEN PORT 445
 #=================================================
-ynh_script_progression --message="Configuring firewall..." --weight=1
+ynh_script_progression "Configuring firewall..."
 
-ynh_exec_warn_less yunohost firewall allow --no-upnp TCP 445 # Allow SMB access
+ynh_hide_warnings yunohost firewall allow --no-upnp TCP 445 # Allow SMB access
 
 #=================================================
 # ADD A CONFIGURATION
 #=================================================
-ynh_script_progression --message="Adding a configuration file..." --weight=1
+ynh_script_progression "Adding $app's configuration..."
 
 samba_sysadmin_setup
-ynh_add_config --template="smb.conf" --destination="/etc/smb/smb.d/$app.conf"
-ynh_add_config --template="avahi-samba.service" --destination="/etc/avahi/services/$app.service"
+ynh_config_add --template="smb.conf" --destination="/etc/smb/smb.d/$app.conf"
+ynh_config_add --template="avahi-samba.service" --destination="/etc/avahi/services/$app.service"
 
 # Create a samba user
-(echo "$password"; echo "$password") | ynh_exec_warn_less smbpasswd -s -a "$app"
+(echo "$password"; echo "$password") | ynh_hide_warnings smbpasswd -s -a "$app"
 
 # Update samba configuration
 samba_sysadmin_update
@@ -46,22 +38,22 @@ samba_sysadmin_add
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
 #=================================================
-ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
+ynh_script_progression "Integrating service in YunoHost..."
 
 yunohost service add smbd --needs_exposed_ports 445
 
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Starting a systemd service..." --weight=1
+ynh_script_progression "Starting $app's systemd service..."
 
-ynh_exec_warn_less testparm -s
+ynh_hide_warnings testparm -s
 
-ynh_systemd_action --service_name=smbd --action="reload"
-ynh_systemd_action --service_name=avahi-daemon --action="restart"
+ynh_systemctl --service=smbd --action="reload"
+ynh_systemctl --service=avahi-daemon --action="restart"
 
 #=================================================
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Installation of $app completed" --last
+ynh_script_progression "Installation of $app completed"
