@@ -19,7 +19,11 @@ ynh_print_info --message="Declaring files to be backed up..."
 # BACKUP THE DATA DIR
 #=================================================
 
-ynh_backup --src_path="$data_dir" --is_big
+if [ "$include_data_dir_in_backup" -eq 1 ]; then
+    ynh_backup --src_path="$data_dir" --is_big
+else
+    echo "Ommitting $data_dir from backup based on include_data_dir_in_backup configuration"
+fi
 
 #=================================================
 # SPECIFIC BACKUP

@@ -41,6 +41,12 @@ ram.runtime = "50M"
     help.fr = "Mot de passe pour accéder à Time Machine"
     type = "password"
 
+    [install.include_data_dir_in_backup]
+    help.en = "Decides if the large Time Machine backup data should be included in a YunoHost backup."
+    help.fr = "Décide si les grandes sauvegardes Time Machine doivent être incluses dans une sauvegarde YunoHost."
+    type = "boolean"
+    default = false
+
 [resources]
     [resources.system_user]
 

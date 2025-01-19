@@ -1,3 +1,6 @@
+* Configuration
+     * The 'include_data_dir_in_backup' configuration decides whether the Time Machine backup data should be included in a yunohost backup. Because the size used by Time Machine backups by default is unbounded, the default setting is to ommit the backup data from yunohost backups.
+
 * Known limitations
     * Only the *.local location is detected automatically. To use the domain, you need to first manually connect to the server using the command `open THE_CONNECTION_STRING` on your Mac
     * There is currently no granular control for disallowing connections from hosts (i.e anyone with the username, password and domain can connect to the Time Machine Volume)

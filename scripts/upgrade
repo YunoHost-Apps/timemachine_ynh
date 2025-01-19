@@ -18,6 +18,14 @@ upgrade_type=$(ynh_check_app_version_changed)
 #=================================================
 # SPECIFIC UPGRADE
 #=================================================
+
+# If include_data_dir_in_backup key does not exist, create it
+if [ -z "${include_data_dir_in_backup:-}" ]; then
+    export include_data_dir_in_backup=1
+    ynh_app_setting_set --app="$app" --key=include_data_dir_in_backup --value=$include_data_dir_in_backup
+fi
+
+#=================================================
 # UPDATE A CONFIG FILE
 #=================================================
 ynh_script_progression --message="Updating a configuration file..." --weight=1
