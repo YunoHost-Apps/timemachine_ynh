@@ -21,6 +21,7 @@ Configure the server as a Time Machine backup target
 
 ## Screenshots
 ![Screenshot of Time Machine](./doc/screenshots/screenshot.jpg)
+![Screenshot of Time Machine](./doc/screenshots/timemachine.jpg)
 
 ## 📦 Developer info
 
